@@ -149,3 +149,13 @@ That makes it easy to write the report honestly:
 - **best pure accuracy**: baseline SVM and Random Forest on the fixed holdout split
 - **best cross-validated accuracy**: Random Forest
 - **best safety-oriented model**: logistic extension or threshold-based warning rule
+
+## Final Paper
+
+The final written report for the project is included at:
+
+- `report/Athlete_Injury_Risk_Prediction_Final_Report.docx`
+
+The report builder script is:
+
+- `report/build_final_report.py`
