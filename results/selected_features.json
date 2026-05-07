@@ -1,0 +1,14 @@
+{
+  "baseline_svm_rfe10": [
+    "Height_cm",
+    "Training_Intensity",
+    "Training_Hours_Per_Week",
+    "Recovery_Days_Per_Week",
+    "Rest_Between_Events_Days",
+    "Fatigue_Score",
+    "Performance_Score",
+    "Team_Contribution_Score",
+    "Load_Balance_Score",
+    "ACL_Risk_Score"
+  ]
+}
