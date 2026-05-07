@@ -135,17 +135,3 @@ The experiment runner writes:
 - `results/selected_features.json`
 - the confusion-matrix and feature-importance figures under `results/figures/`
 
-## Notes For The Final Report
-
-This repo now supports the exact story from the presentation:
-
-- the baseline SVM pipeline is reproducible
-- the Random Forest comparison reproduces the interpretation slide
-- the recall-first warning setup is coded and testable
-- the extended logistic model gives a stronger all-features alternative for discussion and future work
-
-That makes it easy to write the report honestly:
-
-- **best pure accuracy**: baseline SVM and Random Forest on the fixed holdout split
-- **best cross-validated accuracy**: Random Forest
-- **best safety-oriented model**: logistic extension or threshold-based warning rule
