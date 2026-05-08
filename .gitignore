@@ -3,3 +3,10 @@ __pycache__/
 *.pyo
 *.pyd
 .ipynb_checkpoints/
+.demo-venv/
+report/assets/
+report/*.pdf
+report/preview/
+report/preview_final/
+report/preview_template_final/
+report/preview_template_final2/

@@ -63,7 +63,7 @@ The repo now does two things:
 
 Repeated `5x10` stratified cross-validation on the full dataset shows:
 
-- `random_forest_balanced` has the highest mean accuracy: `0.9560`
+- `random_forest_balanced` has the highest mean accuracy: about `0.956`
 - `logistic_extension_all_features` has the best overall balance between accuracy and injury recovery:
   - mean accuracy: `0.9435`
   - mean balanced accuracy: `0.8588`
@@ -123,6 +123,26 @@ Run the tests:
 ```bash
 python -m unittest discover -s tests -v
 ```
+
+## For Project Demo
+
+For the required implementation demo on a new computer, use the repo root script below after downloading the project from GitHub:
+
+```powershell
+.\run_demo.bat
+```
+
+That demo script will:
+
+- create a fresh virtual environment
+- install the required packages
+- run the full experiment suite
+- verify that the saved results match the report values
+- run the automated tests
+
+If you need a step-by-step walkthrough from the recording, open:
+
+- `DEMO_GUIDE.md`
 
 ## Saved Outputs
 
