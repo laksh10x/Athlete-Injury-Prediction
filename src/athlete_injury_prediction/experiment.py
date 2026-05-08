@@ -120,6 +120,12 @@ def get_all_feature_frame(df: pd.DataFrame) -> pd.DataFrame:
     return df.drop(columns=[TARGET_COLUMN, ID_COLUMN])
 
 
+def split_feature_columns(df: pd.DataFrame) -> tuple[list[str], list[str]]:
+    numeric_columns = [column for column in df.columns if pd.api.types.is_numeric_dtype(df[column])]
+    categorical_columns = [column for column in df.columns if column not in numeric_columns]
+    return numeric_columns, categorical_columns
+
+
 def metric_dict(y_true: pd.Series, y_pred: np.ndarray) -> dict[str, Any]:
     cm = confusion_matrix(y_true, y_pred)
     return {
@@ -212,8 +218,7 @@ def run_logistic_extension(split_data: SplitData) -> dict[str, Any]:
     y_val = split_data.val[TARGET_COLUMN]
     y_test = split_data.test[TARGET_COLUMN]
 
-    numeric_columns = [column for column in X_train.columns if X_train[column].dtype != "object"]
-    categorical_columns = [column for column in X_train.columns if X_train[column].dtype == "object"]
+    numeric_columns, categorical_columns = split_feature_columns(X_train)
 
     preprocessor = ColumnTransformer(
         transformers=[
@@ -290,8 +295,7 @@ def cross_validate_models(repo_root: Path) -> pd.DataFrame:
     X_all = get_all_feature_frame(df)
     y = df[TARGET_COLUMN]
 
-    numeric_columns = [column for column in X_all.columns if X_all[column].dtype != "object"]
-    categorical_columns = [column for column in X_all.columns if X_all[column].dtype == "object"]
+    numeric_columns, categorical_columns = split_feature_columns(X_all)
 
     cv = RepeatedStratifiedKFold(n_splits=5, n_repeats=10, random_state=RANDOM_STATE)
     scoring = {

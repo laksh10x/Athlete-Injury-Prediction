@@ -12,7 +12,12 @@ import sys
 if str(SRC_DIR) not in sys.path:
     sys.path.insert(0, str(SRC_DIR))
 
-from athlete_injury_prediction.experiment import load_dataset, run_holdout_experiments
+from athlete_injury_prediction.experiment import (
+    get_all_feature_frame,
+    load_dataset,
+    run_holdout_experiments,
+    split_feature_columns,
+)
 
 
 class AthletePipelineTests(unittest.TestCase):
@@ -27,6 +32,15 @@ class AthletePipelineTests(unittest.TestCase):
         self.assertEqual(baseline_test["confusion_matrix"], [[28, 0], [1, 1]])
         self.assertAlmostEqual(baseline_test["accuracy"], 29 / 30, places=6)
         self.assertAlmostEqual(baseline_test["recall"], 0.5, places=6)
+
+    def test_all_feature_pipeline_preserves_categorical_columns(self):
+        df = load_dataset(REPO_ROOT)
+        features = get_all_feature_frame(df)
+        numeric_columns, categorical_columns = split_feature_columns(features)
+        self.assertIn("Gender", categorical_columns)
+        self.assertIn("Position", categorical_columns)
+        self.assertNotIn("Gender", numeric_columns)
+        self.assertNotIn("Position", numeric_columns)
 
     def test_safety_models_recover_all_injury_cases(self):
         results = run_holdout_experiments(REPO_ROOT)
