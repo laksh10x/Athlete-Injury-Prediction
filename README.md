@@ -124,7 +124,7 @@ Run the tests:
 python -m unittest discover -s tests -v
 ```
 
-## Fresh-Computer Demo
+## For Project Demo
 
 For the required implementation demo on a new computer, use the repo root script below after downloading the project from GitHub:
 
@@ -140,7 +140,7 @@ That demo script will:
 - verify that the saved results match the report values
 - run the automated tests
 
-If you need a step-by-step walkthrough for the recording, open:
+If you need a step-by-step walkthrough from the recording, open:
 
 - `DEMO_GUIDE.md`
 
@@ -155,27 +155,3 @@ The experiment runner writes:
 - `results/selected_features.json`
 - the confusion-matrix and feature-importance figures under `results/figures/`
 
-## Notes For The Final Report
-
-This repo now supports the exact story from the presentation:
-
-- the baseline SVM pipeline is reproducible
-- the Random Forest comparison reproduces the interpretation slide
-- the recall-first warning setup is coded and testable
-- the extended logistic model gives a stronger all-features alternative for discussion and future work
-
-That makes it easy to write the report honestly:
-
-- **best pure accuracy**: baseline SVM and Random Forest on the fixed holdout split
-- **best cross-validated accuracy**: Random Forest
-- **best safety-oriented model**: logistic extension or threshold-based warning rule
-
-## Final Paper
-
-The final written report for the project is included at:
-
-- `report/Athlete_Injury_Risk_Prediction_Final_Report.docx`
-
-The report builder script is:
-
-- `report/build_final_report.py`
